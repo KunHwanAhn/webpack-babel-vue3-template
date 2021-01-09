@@ -1,0 +1,12 @@
+{
+  "name": "webpack-babel-vue3-template",
+  "version": "0.0.1",
+  "main": "src/main.js",
+  "repository": "git@github.com:KunHwanAhn/webpack-babel-vue3-template.git",
+  "author": "Conan Kunhwan Ahn <kunhwon@gmail.com>",
+  "devDependencies": {
+    "webpack": "^5.12.2",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^4.0.0-beta.0"
+  }
+}
