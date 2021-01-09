@@ -43,6 +43,14 @@ const config = {
       template: resolve(__dirname, './public/index.html'),
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
+    ],
+  },
 };
 
 if (isProduction) {
