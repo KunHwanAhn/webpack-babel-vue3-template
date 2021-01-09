@@ -1,0 +1,15 @@
+{
+  "name": "webpack-babel-vue3-template",
+  "version": "0.0.1",
+  "main": "src/main.js",
+  "repository": "git@github.com:KunHwanAhn/webpack-babel-vue3-template.git",
+  "author": "Conan Kunhwan Ahn <kunhwon@gmail.com>",
+  "scripts": {
+    "lint": "eslint --fix ./src/**/*"
+  },
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
