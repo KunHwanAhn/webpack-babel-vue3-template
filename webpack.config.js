@@ -1,6 +1,7 @@
 const { resolve } = require('path');
 const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -143,6 +144,9 @@ if (isProduction) {
   config.plugins = [
     ...config.plugins,
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [{ from: 'assets', to: 'assets' }],
+    }),
     new MiniCssExtractPlugin({
       filename: 'styles/[name].css',
       chunkFilename: 'styles/[name].css',
@@ -164,6 +168,12 @@ if (isProduction) {
     hot: true,
     liveReload: false,
     historyApiFallback: true,
+    static: [
+      {
+        directory: resolve(__dirname, './assets'),
+        publicPath: '/assets/',
+      },
+    ],
     overlay: {
       warnings: true,
       errors: true,

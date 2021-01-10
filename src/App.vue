@@ -1,6 +1,14 @@
 <template>
-  <div class="sample">
-    Vue app
+  <div>
+    <div class="sample">
+      Hello world!
+    </div>
+    <div>
+      <img
+        src="assets/images/google.png"
+        alt="Google Logo"
+      >
+    </div>
   </div>
 </template>
 
