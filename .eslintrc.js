@@ -6,10 +6,14 @@ module.exports = {
     node: true,
   },
   extends: [
+    'plugin:vue/vue3-recommended',
     'airbnb-base',
   ],
-  parser: '@babel/eslint-parser',
+  plugins: [
+    'vue',
+  ],
   parserOptions: {
+    parser: '@babel/eslint-parser',
     ecmaVersion: 2020,
     sourceType: 'module',
   },

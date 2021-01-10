@@ -1,4 +1,6 @@
+import { createApp } from 'vue';
 import './styles/index.scss';
 
-// eslint-disable-next-line no-console
-console.log('hello world');
+import App from './App.vue';
+
+createApp(App).mount('#app');
