@@ -59,6 +59,25 @@ const config = {
         loader: 'html-loader',
       },
       {
+        test: /\.m?jsx?$/,
+        include: [
+          resolve(__dirname, 'src'),
+        ],
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', {
+                useBuiltIns: 'usage',
+                corejs: 3,
+                shippedProposals: true,
+              }],
+            ],
+          },
+        },
+      },
+      {
         test: /\.s(c|a)ss$/,
         use: [
           isProduction ? { loader: MiniCssExtractPlugin.loader } : 'style-loader',
