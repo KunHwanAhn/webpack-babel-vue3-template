@@ -1,0 +1,51 @@
+{
+  "name": "webpack-babel-vue3-template",
+  "version": "0.0.1",
+  "main": "src/main.js",
+  "repository": "git@github.com:KunHwanAhn/webpack-babel-vue3-template.git",
+  "author": "Conan Kunhwan Ahn <kunhwon@gmail.com>",
+  "scripts": {
+    "serve": "cross-env NODE_ENV=development webpack serve",
+    "build": "cross-env NODE_ENV=production webpack",
+    "lint": "eslint --fix --ext .js,.vue src",
+    "postinstall": "husky install"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@vue/compiler-sfc": "^3.0.5",
+    "autoprefixer": "^10.2.1",
+    "babel-loader": "^8.2.2",
+    "case-sensitive-paths-webpack-plugin": "^2.3.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^5.0.1",
+    "css-minimizer-webpack-plugin": "^1.2.0",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-vue": "^7.4.1",
+    "eslint-webpack-plugin": "^2.4.1",
+    "fibers": "^5.0.0",
+    "html-loader": "^1.3.2",
+    "html-webpack-plugin": "^5.0.0-beta.4",
+    "husky": "^5.0.6",
+    "lint-staged": "^10.5.3",
+    "mini-css-extract-plugin": "^1.3.3",
+    "postcss": "^8.2.4",
+    "postcss-loader": "^4.1.0",
+    "sass": "^1.32.2",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "terser-webpack-plugin": "^5.1.1",
+    "vue-loader": "^16.1.2",
+    "webpack": "^5.12.2",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^4.0.0-beta.0"
+  },
+  "dependencies": {
+    "core-js": "^3.8.2",
+    "vue": "^3.0.5"
+  }
+}
