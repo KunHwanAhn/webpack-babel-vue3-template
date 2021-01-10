@@ -1,5 +1,5 @@
 {
   "*.{js,vue}": [
-    "lint"
+    "eslint --fix --ext .js,.vue src"
   ]
 }
