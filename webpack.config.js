@@ -2,6 +2,10 @@ const { resolve } = require('path');
 const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 const MODE_PRODUCTION = 'production';
 const MODE_DEVELOPMENT = 'development';
@@ -32,8 +36,13 @@ const config = {
         },
       },
     },
+    minimizer: [
+      new CssMinimizerPlugin(),
+    ],
   },
   plugins: [
+    new CaseSensitivePathsPlugin(),
+    new ESLintPlugin(),
     new DefinePlugin({
       'process.env': {
         NODE_ENV: isProduction ? `"${MODE_PRODUCTION}"` : `"${MODE_DEVELOPMENT}"`,
@@ -49,6 +58,25 @@ const config = {
         test: /\.html$/,
         loader: 'html-loader',
       },
+      {
+        test: /\.s(c|a)ss$/,
+        use: [
+          isProduction ? { loader: MiniCssExtractPlugin.loader } : 'style-loader',
+          'css-loader',
+          'postcss-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              // eslint-disable-next-line global-require
+              implementation: require('sass'),
+              sassOptions: {
+                // eslint-disable-next-line global-require
+                fiber: require('fibers'),
+              },
+            },
+          },
+        ],
+      },
     ],
   },
 };
@@ -59,6 +87,11 @@ if (isProduction) {
   config.plugins = [
     ...config.plugins,
     new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'styles/[name].css',
+      chunkFilename: 'styles/[name].css',
+      ignoreOrder: true,
+    }),
   ];
 } else {
   config.devtool = 'source-map';
