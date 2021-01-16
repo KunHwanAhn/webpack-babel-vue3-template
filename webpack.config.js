@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 const { VueLoaderPlugin } = require('vue-loader');
@@ -88,13 +89,6 @@ const config = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: {
-          extractCSS: isProduction,
-        },
-      },
-      {
-        test: /\.html$/,
-        loader: 'html-loader',
       },
       {
         test: /\.m?jsx?$/,
@@ -119,7 +113,12 @@ const config = {
         test: /\.s(c|a)ss$/,
         use: [
           isProduction ? { loader: MiniCssExtractPlugin.loader } : 'style-loader',
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+            },
+          },
           'postcss-loader',
           {
             loader: 'sass-loader',
@@ -151,6 +150,11 @@ if (isProduction) {
       filename: 'styles/[name].css',
       chunkFilename: 'styles/[name].css',
       ignoreOrder: true,
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      openAnalyzer: false,
+      generateStatsFile: true,
     }),
   ];
 } else {
